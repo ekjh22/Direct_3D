@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns:atg="http://atg.xbox.com" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Base">
+      <UniqueIdentifier>{41015b53-102c-4326-bd37-531118c87d44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base\Shaders">
+      <UniqueIdentifier>{2c3d4c8c-5d1a-459a-a05a-a4e4b608a44e}</UniqueIdentifier>
+      <Extensions>fx;fxh;hlsl</Extensions>
+    </Filter>
+    <Filter Include="Base\Resource Files">
+      <UniqueIdentifier>{8e114980-c1a3-4ada-ad7c-83caadf5daeb}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Base\DXUT">
+      <UniqueIdentifier>{a43c5c25-0e86-4a20-b64a-883785ff74fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{e72e5f12-f1a5-44d5-8b48-de9928bca842}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\MainGame">
+      <UniqueIdentifier>{ba50e131-711a-4751-bc09-72cf69e28be8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Manager">
+      <UniqueIdentifier>{93646384-2ecb-41e1-a9e4-4bafb5465fae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scene">
+      <UniqueIdentifier>{fdf73c85-d022-4b09-9542-90e88e852fd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{74a96646-d792-4772-849b-bd6cbbe9e36d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Camera">
+      <UniqueIdentifier>{5d76dfab-8230-4ea9-8d31-3142793eb656}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Collision">
+      <UniqueIdentifier>{423a88c9-4da0-406c-b04d-ad7beb0ba86a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Game">
+      <UniqueIdentifier>{3ac58428-5015-46ec-8996-c54342dbcaae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Image">
+      <UniqueIdentifier>{47081b7a-02f0-481b-9eba-f4db380d9eaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Input">
+      <UniqueIdentifier>{236c5cdd-646a-4554-9bc4-7b819225cb58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Object">
+      <UniqueIdentifier>{1a225578-a6bb-4d66-bf15-20b86edf8abc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Scene">
+      <UniqueIdentifier>{d4e8b8ef-1288-4d9f-8128-db1dfd14dcd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Sound">
+      <UniqueIdentifier>{4f641d21-6d6b-442c-8dc9-40da4889ae6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Mesh">
+      <UniqueIdentifier>{170baeaa-2c50-4a38-828c-7f0532f15af5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\ETC">
+      <UniqueIdentifier>{62dc34b9-d7f6-4fca-8adc-13998b286b8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Fx">
+      <UniqueIdentifier>{5f7fc538-4dd4-4ce9-9538-29bdc61b9cb7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DXUT\Optional\directx.ico">
+      <Filter>Base\Resource Files</Filter>
+    </None>
+    <ClInclude Include="DXUT\Core\DXUT.h">
+      <Filter>Base\DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Core\DXUTenum.h">
+      <Filter>Base\DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Core\DXUTmisc.h">
+      <Filter>Base\DXUT</Filter>
+    </ClInclude>
+    <ClCompile Include="DXUT\Core\DXUT.cpp">
+      <Filter>Base\DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Core\DXUTenum.cpp">
+      <Filter>Base\DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Core\DXUTmisc.cpp">
+      <Filter>Base\DXUT</Filter>
+    </ClCompile>
+    <ClInclude Include="DXUT\Optional\DXUTcamera.h">
+      <Filter>Base\DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\DXUTgui.h">
+      <Filter>Base\DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\DXUTres.h">
+      <Filter>Base\DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\DXUTsettingsdlg.h">
+      <Filter>Base\DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\SDKmesh.h">
+      <Filter>Base\DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\SDKmisc.h">
+      <Filter>Base\DXUT</Filter>
+    </ClInclude>
+    <ClCompile Include="DXUT\Optional\DXUTcamera.cpp">
+      <Filter>Base\DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\DXUTgui.cpp">
+      <Filter>Base\DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\DXUTres.cpp">
+      <Filter>Base\DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\DXUTsettingsdlg.cpp">
+      <Filter>Base\DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\SDKmesh.cpp">
+      <Filter>Base\DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\SDKmisc.cpp">
+      <Filter>Base\DXUT</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EmptyProject.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraManager.cpp">
+      <Filter>Manager\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Manager\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Manager\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageManager.cpp">
+      <Filter>Manager\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Manager\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshLoader.cpp">
+      <Filter>Manager\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Frame.cpp">
+      <Filter>Manager\ETC</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Manager\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Manager\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Manager\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Manager\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Manager\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="FxManager.cpp">
+      <Filter>Manager\Fx</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Manager\Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CLInclude Include="resource.h">
+      <Filter>Base\Resource Files</Filter>
+    </CLInclude>
+    <ResourceCompile Include="EmptyProject.rc">
+      <Filter>Base\Resource Files</Filter>
+    </ResourceCompile>
+    <ClInclude Include="stdafx.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraManager.h">
+      <Filter>Manager\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Manager\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Manager\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageManager.h">
+      <Filter>Manager\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Manager\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshLoader.h">
+      <Filter>Manager\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.h">
+      <Filter>Manager\ETC</Filter>
+    </ClInclude>
+    <ClInclude Include="Schedule.h">
+      <Filter>Manager\ETC</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Manager\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Manager\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Manager\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Manager\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>Manager\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="FxManager.h">
+      <Filter>Manager\Fx</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Manager\Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
