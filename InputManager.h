@@ -27,7 +27,7 @@ public:
 		return Vector2(pt.x, pt.y);
 	}
 
-	/*Vector2 GetWorldMousePos()
+	Vector2 GetWorldMousePos()
 	{
 		POINT pt;
 		GetCursorPos(&pt);
@@ -35,7 +35,7 @@ public:
 		Vector2 mousePos = Vector2(pt.x, pt.y);
 		mousePos -= Vector2((WINSIZEX / 2 - CAMERA->cameraPos.x), (WINSIZEY / 2 - CAMERA->cameraPos.y));
 		return mousePos;
-	}*/
+	}
 };
 
 

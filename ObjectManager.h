@@ -12,7 +12,6 @@ class ObjectManager :
 {
 public:
 	list<Object*> objectList[ObjectTag::END];
-	long objectId = 0;
 public:
 	ObjectManager();
 	virtual ~ObjectManager();

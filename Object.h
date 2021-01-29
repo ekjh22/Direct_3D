@@ -5,8 +5,6 @@ class Schedule;
 class Object
 {
 public:
-    static long idGenerator;
-
 	CMeshLoader* mesh;
 
 	Vector3 pos = Vector3(0, 0, 0);
@@ -22,12 +20,15 @@ public:
 	Schedule* sche = nullptr;
 	Schedule* jumpSche;
 
-
 	bool isDestroy = false;
 	bool isDead = false;
+	bool isJump = false;
+	bool isGround = false;
 
 	bool isUseQua = false;
 	bool isUseQuaAllRot = false;
+
+	float yGravity = 300;
 
 	D3DXCOLOR curColor = D3DXCOLOR(1, 1, 1, 1);
 	D3DXCOLOR oldColor = D3DXCOLOR(1, 1, 1, 1);

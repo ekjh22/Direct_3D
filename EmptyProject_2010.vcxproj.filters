@@ -21,9 +21,6 @@
     <Filter Include="Game\MainGame">
       <UniqueIdentifier>{ba50e131-711a-4751-bc09-72cf69e28be8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Manager">
-      <UniqueIdentifier>{93646384-2ecb-41e1-a9e4-4bafb5465fae}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Scene">
       <UniqueIdentifier>{fdf73c85-d022-4b09-9542-90e88e852fd7}</UniqueIdentifier>
     </Filter>
@@ -62,6 +59,9 @@
     </Filter>
     <Filter Include="Manager\Fx">
       <UniqueIdentifier>{5f7fc538-4dd4-4ce9-9538-29bdc61b9cb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Object">
+      <UniqueIdentifier>{710e6780-9d8f-4d3c-8aa5-e42101966434}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -148,9 +148,6 @@
     <ClCompile Include="Frame.cpp">
       <Filter>Manager\ETC</Filter>
     </ClCompile>
-    <ClCompile Include="SoundManager.cpp">
-      <Filter>Manager\Sound</Filter>
-    </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>Manager\Scene</Filter>
     </ClCompile>
@@ -168,6 +165,18 @@
     </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>Manager\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>Game\MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayer.cpp">
+      <Filter>Game\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CLoading.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CGame.cpp">
+      <Filter>Game\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -207,9 +216,6 @@
     <ClInclude Include="Schedule.h">
       <Filter>Manager\ETC</Filter>
     </ClInclude>
-    <ClInclude Include="SoundManager.h">
-      <Filter>Manager\Sound</Filter>
-    </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>Manager\Scene</Filter>
     </ClInclude>
@@ -227,6 +233,18 @@
     </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>Manager\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>Game\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayer.h">
+      <Filter>Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CLoading.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CGame.h">
+      <Filter>Game\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

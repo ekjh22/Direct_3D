@@ -4,6 +4,10 @@ class GameManager :
     public singleton<GameManager>
 {
 public:
+    bool isUpdate = false;
+
+    float playerMoveSpeed = 50.f;
+public:
     GameManager();
     virtual ~GameManager();
 

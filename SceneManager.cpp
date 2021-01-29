@@ -71,9 +71,9 @@ void SceneManager::Render()
 		OBJECT->Render();
 	}
 
-	IMAGE->ReBegin(true, false);
+	/*IMAGE->ReBegin(true, false);
 	IMAGE->Render(IMAGE->GetTexture(L"black", L"./Resource/UI/black.png"), Vector3(0, 0, 0), Vector3(1, 1, 1), 0, D3DCOLOR_ARGB((LONG)rgb, 255, 255, 255));
-	IMAGE->ReBegin(false, false);
+	IMAGE->ReBegin(false, false);*/
 }
 
 void SceneManager::Destroy()

@@ -20,7 +20,6 @@ public:
 
 	Matrix matView, matProj;
 
-	bool isBoss = false;
 	bool isLoad = false;
 
 	Vector3 Shakepos = Vector3(0, 0, 0);
@@ -28,7 +27,6 @@ public:
 	bool isShake = false;
 	float shakeTime = 0;
 	system_clock::time_point shTime;
-
 
 	void Update();
 	void SetTransform();

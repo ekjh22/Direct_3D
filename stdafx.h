@@ -1,5 +1,6 @@
 #pragma once
 #pragma comment (lib, "dsound.lib")
+#pragma comment (lib, "legacy_stdio_definitions.lib")
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -27,6 +28,9 @@ using Tag = int;
 
 const static float WINSIZEX = 1920.0f;
 const static float WINSIZEY = 1080.0f;
+
+const static float GLOBALGRAVITY = 9.81f;
+const static float BASEFLOOR = 0.f;
 
 #define gDevice DXUTGetD3D9Device()
 #define GetNowTime system_clock::now()
@@ -58,6 +62,6 @@ void Lerp(T* target, const T& start, const T& end, float speed)
 #include "ObjectManager.h"
 #include "SceneManager.h"	
 #include "InputManager.h"
-#include "SoundManager.h"
+//#include "SoundManager.h"
 #include "GameManager.h"
 #include "FXManager.h"

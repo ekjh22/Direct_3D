@@ -83,7 +83,6 @@ bool CollisionManager::CheckColMap(Object* obj)
 
 bool CollisionManager::CheckPosMap(Vector3* pos)
 {
-
 	D3DLOCKED_RECT lR;
 
 	int posX = pos->x / 10;
@@ -91,7 +90,6 @@ bool CollisionManager::CheckPosMap(Vector3* pos)
 
 	pixelMap->texturePtr->LockRect(0, &lR, nullptr, D3DLOCK_DISCARD);
 	DWORD* dwColor = reinterpret_cast<DWORD*>(lR.pBits);
-
 
 	if (pos->x / 10 < 0 ||
 		pos->x / 10 > pixelMap->info.Width ||
@@ -153,7 +151,9 @@ void CollisionManager::Update()
 			if (length < (iter1->fRadius + iter2->fRadius))
 			{
 				iter1->OnCollision(iter2);
-				if (auto find = iter1->colEnterList.find(iter2->parent); find == iter1->colEnterList.end())
+
+				auto find = iter1->colEnterList.find(iter2->parent);
+				if (find == iter1->colEnterList.end())
 				{
 					iter1->colEnterList.insert(iter2->parent);
 				}

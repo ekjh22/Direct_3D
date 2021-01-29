@@ -17,7 +17,6 @@ Object* ObjectManager::CreateObject(ObjectTag tag, Object* obj)
 {
 	if (!obj) return nullptr;
 	Object* temp = obj;
-	temp->idGenerator = ++objectId;
 	temp->tag = tag;
 	temp->Init();
 	objectList[tag].push_back(temp);
