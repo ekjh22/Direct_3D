@@ -22,16 +22,20 @@ public:
 	LPD3DXSPRITE lSprite;
 	LPD3DXFONT lFont;
 
-
 	map<wstring, texture*> mImage;
 	map<wstring, CMeshLoader*> mMesh;
 public:
-	ImageManager();
-	virtual ~ImageManager();
-
 	void Init();
 	void Destroy();
 
+	void Begin(bool isUi, bool isBill);
+	void ReBegin(bool isUi, bool isBill);
+	void End();
+
+	void LostDevice();
+	void ResetDevice();
+
+public:
 	texture* GetTexture(wstring key, wstring path);
 	vector<texture*> GetVecTexture(wstring key, wstring path, int count);
 	vector<texture*> GetVec1Texture(wstring key, wstring path, int count);
@@ -46,12 +50,9 @@ public:
 
 	void PrintText(wstring text, Vector3 pos, D3DCOLOR color);
 
-	void Begin(bool isUi, bool isBill);
-	void ReBegin(bool isUi, bool isBill);
-	void End();
-
-	void LostDevice();
-	void ResetDevice();
+public:
+	ImageManager();
+	virtual ~ImageManager();
 };
 
 #define IMAGE ImageManager::GetInstance()

@@ -2,24 +2,21 @@
 class Frame
 {
 public:
-	int curF = 0;
-	int startF = 0;
-	int endF = 0;
-	double fDelay;
+	int curFrame   = 0;
+	int startFrame = 0;
+	int endFrame   = 0;
+	double delay   = 0.f;
 
-	system_clock::time_point timePoint;
+	Time timePoint;
 
-	bool isF = false;
+	bool isDone = true;
 
 public:
-	Frame();
-	virtual ~Frame();
-
-	void SetFrame(int start, int end, double delay)
+	void SetFrame(int _start, int _end, double _delay)
 	{
-		curF = startF = start;
-		endF = end;
-		fDelay = delay;
+		curFrame  = startFrame = _start;
+		endFrame  = _end;
+		delay	  = _delay;
 		timePoint = GetNowTime;
 	}
 	bool Update();
@@ -27,5 +24,9 @@ public:
 	{
 		Update();
 	}
+
+public:
+	Frame();
+	virtual ~Frame();
 };
 

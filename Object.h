@@ -35,9 +35,9 @@ public:
 
 	Tag tag;
 
-	system_clock::time_point dieTime;
-	system_clock::time_point blendTime;
-	system_clock::time_point hitTime;
+	Time dieTime;
+	Time blendTime;
+	Time hitTime;
 
 public:
 	Object();

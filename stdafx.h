@@ -24,6 +24,7 @@ using Vector3 = D3DXVECTOR3;
 using Vector4 = D3DXVECTOR4;
 using Matrix = D3DXMATRIX;
 using Quaternion = D3DXQUATERNION;
+using Time = system_clock::time_point;
 using Tag = int;
 
 const static float WINSIZEX = 1920.0f;

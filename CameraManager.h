@@ -3,42 +3,40 @@
 class CameraManager :
 	public singleton<CameraManager>
 {
-public:
-	CameraManager();
-	virtual ~CameraManager();
-
-	Object* player;
-
-	Vector3 cameraPos;
+private:
+	Vector3 basePos = Vector3(0, 300, 600);
 	Vector3 at;
 	Vector3 up;
 
-	Vector3 saveTemp = Vector3(0.0f, 300, 600.f);
+	Vector2 curMousePos = Vector2(0, 0);
 
-	Vector3 cameraRot = Vector3(0, 0, 0);
-	Vector2 nowMouse = Vector3(0, 0, 0);
+	Matrix  matView, matProj;
 
-	Matrix matView, matProj;
+	Vector3 shakePos  = Vector3(0, 0, 0);
+	Time    shakeTimer;
+	float   shakeTime = 0.f, shakeScale = 0.f;
+	bool    isShake   = false;
 
-	bool isLoad = false;
+public:
+	Vector3 curPos = Vector3(0, 0, 0), curRot = Vector3(0, 0, 0), curScale = Vector3(0, 0, 0);
+	Object* followObj = nullptr;
 
-	Vector3 Shakepos = Vector3(0, 0, 0);
-	float shakeScale = 0.f;
-	bool isShake = false;
-	float shakeTime = 0;
-	system_clock::time_point shTime;
-
+public:
 	void Update();
 	void SetTransform();
-	void CameraShake(float time, float Scale);
+	void CameraShake(float _time, float _scale);
 
 	Vector2 GetScreenPos()
 	{
 		POINT point = { 0,0 };
 		ClientToScreen(DXUTGetHWND(), &point);
-		Vector2 v_mousepos(point.x, point.y);
-		return v_mousepos;
+		Vector2 vMousepos(point.x, point.y);
+		return vMousepos;
 	}
+
+public:
+	CameraManager();
+	virtual ~CameraManager();
 };
 
 #define CAMERA CameraManager::GetInstance()

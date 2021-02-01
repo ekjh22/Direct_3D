@@ -5,13 +5,15 @@ class Collider
 {
 public:
 	Object* parent = nullptr;
-	Vector3 colPos = Vector3(0, 0, 0);
-	float fRadius = 0;
-	std::set<Object*> colEnterList;
+	Vector3 curPos = Vector3(0, 0, 0);
 
+	float radius = 0.f;
+	set<Object*> enterList;
+public:
+	virtual void OnCollision(Collider* _collider);
+
+public:
 	Collider();
 	virtual ~Collider();
-
-	virtual void OnCollision(Collider* col);
 };
 

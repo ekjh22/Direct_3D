@@ -16,7 +16,7 @@ void Object::DestroyCollider()
 	if (collider)
 	{
 		COLLISION->UnRegister(collider);
-		collider->colEnterList.clear();
+		collider->enterList.clear();
 		SAFE_DELETE(collider);
 	}
 	if (sche)

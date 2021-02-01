@@ -5,21 +5,22 @@ class Collider;
 class CollisionManager :
 	public singleton<CollisionManager>
 {
-public:
+private:
 	list<Collider*> colliderList;
-
 	texture* pixelMap;
+
+public:
+	void Register(Collider* _collider);
+	void UnRegister(Collider* _collider);
+
+	bool CheckColMap(Object* _object);
+	bool CheckPosMap(Vector3* _position);
+
+	void Update();
+
 public:
 	CollisionManager();
 	virtual ~CollisionManager();
-
-	void Register(Collider* col);
-	void UnRegister(Collider* col);
-
-	bool CheckColMap(Object* obj);
-	bool CheckPosMap(Vector3* pos);
-
-	void Update();
 };
 
 #define COLLISION CollisionManager::GetInstance()

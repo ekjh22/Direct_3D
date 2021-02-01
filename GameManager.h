@@ -5,14 +5,15 @@ class GameManager :
 {
 public:
     bool isUpdate = false;
-
     float playerMoveSpeed = 50.f;
+
+public:
+    void Init();
+    void Update();
+
 public:
     GameManager();
     virtual ~GameManager();
-
-    void Init();
-    void Update();
 };
 
 #define GAME GameManager::GetInstance()

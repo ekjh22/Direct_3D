@@ -11,15 +11,15 @@ Frame::~Frame()
 
 bool Frame::Update()
 {
-	if (isF)
+	if (!isDone)
 	{
 		duration<double> sec = GetNowTime - timePoint;
-		if (sec.count() > fDelay)
+		if (sec.count() > delay)
 		{
 			timePoint = GetNowTime;
-			if (++curF > endF)
+			if (++curFrame > endFrame)
 			{
-				curF = startF;
+				curFrame = startFrame;
 				return true;
 			}
 		}
@@ -28,12 +28,12 @@ bool Frame::Update()
 	else
 	{
 		milliseconds sec = duration_cast<milliseconds>(GetNowTime - timePoint);
-		if (sec.count() > fDelay)
+		if (sec.count() > delay)
 		{
 			timePoint = GetNowTime;
-			if (++curF > endF)
+			if (++curFrame > endFrame)
 			{
-				curF = startF;
+				curFrame = startFrame;
 				return true;
 			}
 		}

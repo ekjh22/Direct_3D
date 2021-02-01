@@ -10,7 +10,7 @@ Collider::~Collider()
 {
 }
 
-void Collider::OnCollision(Collider* col)
+void Collider::OnCollision(Collider* _collider)
 {
-	parent->OnCollision(col);
+	parent->OnCollision(_collider);
 }
