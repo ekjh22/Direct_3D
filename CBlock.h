@@ -1,12 +1,12 @@
 #pragma once
 #include "CComponent.h"
 
-class CPlayer :
+class CBlock :
     public CComponent
 {
 public:
-	CPlayer();
-	~CPlayer();
+	CBlock();
+	~CBlock();
 
 public:
 	virtual void Awake() override;
@@ -20,10 +20,8 @@ public:
 	virtual void OnCollisionExit(CObject* _pObj) override;
 
 public:
-	void Move();
-	void Draw();
+	CObject* target;
 
-public:
-	bool m_draw = false;
+	int numberX, numberY;
 };
 

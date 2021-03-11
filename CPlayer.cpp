@@ -1,146 +1,134 @@
 #include "DXUT.h"
 #include "CPlayer.h"
 
-void CPlayer::Init()
+CPlayer::CPlayer()
 {
-	DEBUG_LOG("플레이어 소환");
+	srand(time(nullptr));
+}
 
-	CAMERA->player = this;
+CPlayer::~CPlayer()
+{
+}
 
-	collider = new Collider();
-	collider->fRadius = 10;
-	collider->parent = this;
-	COLLISION->Register(collider);
+void CPlayer::Awake()
+{
+	ac<CSpriteRenderer>()->Init(SPRITE("Player"), SortingLayer::UI, RenderMode::Default);
+	tf->m_vScale = Vec2(0.1f, 0.1f);
+	tf->m_vPos = Vec2(WINSIZEX / 2, WINSIZEY / 2);
+	tf->m_vRot = 0;
+}
 
-	pos = Vector3(0, 0, 0);
-
-	CAMERA->at = Vector3(0, 150, 0);
-	CAMERA->at += pos;
-
-	playerMesh[(int)State::IDLE] = IMAGE->GetVecMesh(L"IDLE", L"./resource/Player/Model/Idle/Idle (%d).obj", 41);
-
-	isUseQuaAllRot = true;
-	isGround = true;
-
-	frame.SetFrame(0, 40, 50); // 1000 1초
-	sche = new Schedule();
-	jumpSche = new Schedule();
-
-	playerState = State::IDLE;
+void CPlayer::Start()
+{
 }
 
 void CPlayer::Update()
 {
-	if (!isDead)
-		frame.Update();
-	if (isDead && frame.curF != 35)
-		frame.Update();
-
-	jumpSche->Update();
-	sche->Update();
-
-	if (!isDead)
-	{
-		while (sche->qSchedule.size())
-			sche->qSchedule.pop();
-
-		Move();
-		Jump();
-	}
+	// 업데이트 함수는 최대한 깔끔하게
+	Move();
 }
 
-void CPlayer::Render()
-{
-	D3DXMATRIXA16 mWorldView = matWorld;
-	D3DXMatrixMultiply(&mWorldView, &mWorldView, &CAMERA->matView);
-
-	gDevice->SetTransform(D3DTS_WORLD, &matWorld);
-	for (int i = 0; i < playerMesh[(int)playerState][frame.curF]->GetNumMaterials(); ++i)
-	{
-		gDevice->SetTexture(0, playerMesh[(int)playerState][frame.curF]->GetMaterial(i)->pTexture);
-		playerMesh[(int)playerState][frame.curF]->GetMesh()->DrawSubset(i);
-	}
-}
-
-void CPlayer::Destroy()
+void CPlayer::LateUpdate()
 {
 }
 
-void CPlayer::OnCollision(Collider* col)
+void CPlayer::OnRender()
 {
 }
 
-void CPlayer::ObjectDead()
+void CPlayer::OnDestroy()
+{
+}
+
+void CPlayer::OnCollisionEnter(CObject* _pObj)
+{
+}
+
+void CPlayer::OnCollisionStay(CObject* _pObj)
+{
+}
+
+void CPlayer::OnCollisionExit(CObject* _pObj)
 {
 }
 
 void CPlayer::Move()
 {
-	Vector3 moveDir = Vector3(0, 0, 0), mDir = Vector3(0, 0, 0), lookDir = Vector3(0, 0, 0);
+	if (m_draw)
+	{
+		RECT r;
+		r.left = tf->m_vPos.x - 1;
+		r.top = tf->m_vPos.y - 1;
+		r.right = tf->m_vPos.x + 1;
+		r.bottom = tf->m_vPos.y + 1;
 
-	Matrix yMat;
-	if (KEYPRESS('W'))
-	{
-		mDir = Vector3(0, 0, 1);
-		D3DXMatrixRotationY(&yMat, D3DXToRadian(CAMERA->cameraRot.x));
-		D3DXVec3TransformNormal(&mDir, &mDir, &yMat);
-	}
-	if (KEYPRESS('S'))
-	{
-		mDir = Vector3(0, 0, -1);
-		D3DXMatrixRotationY(&yMat, D3DXToRadian(CAMERA->cameraRot.x));
-		D3DXVec3TransformNormal(&mDir, &mDir, &yMat);
-	}
-	if (KEYPRESS('A'))
-	{
-		mDir = Vector3(-1, 0, 0);
-		D3DXMatrixRotationY(&yMat, D3DXToRadian(CAMERA->cameraRot.x));
-		D3DXVec3TransformNormal(&mDir, &mDir, &yMat);
-	}
-	if (KEYPRESS('D'))
-	{
-		mDir = Vector3(1, 0, 0);
-		D3DXMatrixRotationY(&yMat, D3DXToRadian(CAMERA->cameraRot.x));
-		D3DXVec3TransformNormal(&mDir, &mDir, &yMat);
-	}
-	pos += mDir * GAME->playerMoveSpeed * DeltaTime;
-	moveDir += mDir * GAME->playerMoveSpeed * DeltaTime;
+		D3DLOCKED_RECT lr;
+		CObject* target = OBJECT.Find(Tag::Black);
 
-	if (lookDir != moveDir)
-	{
-		D3DXVec3Normalize(&lookDir, &moveDir);
-		rot.y = D3DXToDegree(atan2f(moveDir.x, moveDir.z));
-		/*CAMERA->cameraPos += moveDir;
-		CAMERA->at += moveDir;*/
+		target->gc<CSpriteRenderer>()->m_pSprite->m_pTexture->LockRect(0, &lr, &r, D3DLOCK_DISCARD);
+		DWORD* textureColor = (DWORD*)lr.pBits;
+		for (int i = (r.right - r.left) * (r.bottom - r.top); i != 0; --i)
+		{
+			D3DXCOLOR targetPixel = textureColor[i];
+			targetPixel.r = 0;
+			targetPixel.g = 0;
+			targetPixel.b = 0;
+
+			textureColor[i] = targetPixel;
+			GAME.map[r.top + 1][r.left + 1] = 1;
+			//GAME.map[r.bottom][r.right] = 1;
+
+			/*GAME.curNumX = r.left + i;
+			GAME.curNumY = r.top + i;*/
+		}
+		target->gc<CSpriteRenderer>()->m_pSprite->m_pTexture->UnlockRect(0);
 	}
+
+	Vec2 vDir = Vec2(0, 0);
+	if (INPUT.KeyPress(VK_UP))
+		vDir.y = -1;
+	else if (INPUT.KeyPress(VK_DOWN))
+		vDir.y = 1;
+	else if (INPUT.KeyPress(VK_LEFT))
+		vDir.x = -1;
+	else if (INPUT.KeyPress(VK_RIGHT))
+		vDir.x = 1;
+
+	tf->m_vPos += Vec2(vDir.x, vDir.y);
+
+	if (INPUT.KeyDown('Q'))
+		m_draw = true;
+	if (INPUT.KeyUp('Q'))
+		m_draw = false;
+
+	if (INPUT.KeyDown('Z'))
+	{
+		GAME.curNumX = tf->m_vPos.x;
+		GAME.curNumY = tf->m_vPos.y;
+	}
+
+	if (INPUT.KeyDown('P'))
+		GAME.PrintFill();
+	if (INPUT.KeyDown('F'))
+		GAME.FloodFill(GAME.curNumX, GAME.curNumY);
 }
 
-void CPlayer::Jump()
+void CPlayer::Draw()
 {
-	if (isJump)
+	if (INPUT.KeyDown('Q'))
 	{
-		pos.y += jumpDir.y * GAME->playerMoveSpeed * GLOBALGRAVITY * DeltaTime;
-		if (pos.y >= 200)
-		{
-			isJump = false;
-			jumpDir.y = -1;
-		}
+		m_draw = true;
 	}
-	else if (!isJump && !isGround)
+	if (INPUT.KeyUp('Q'))
 	{
-		pos.y += jumpDir.y * GAME->playerMoveSpeed * GLOBALGRAVITY * DeltaTime;
-		if (pos.y <= BASEFLOOR)
-		{
-			isGround = true;
-			jumpDir.y = 0;
-		}
+		m_draw = false;
 	}
 
-	if (KEYDOWN(VK_SPACE) && isGround)
-	{
-		isGround = false;
-		isJump = true;
+	if (INPUT.KeyDown('E'))
+		GAME.PrintFill();
 
-		jumpDir.y = 1;
+	if (INPUT.KeyDown('R'))
+	{
+		GAME.FloodFill(GAME.curNumX, GAME.curNumY);
 	}
 }

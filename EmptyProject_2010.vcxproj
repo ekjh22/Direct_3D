@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -31,6 +31,7 @@
     <ProjectGuid>{D3D09108-96D0-4629-88B8-122C0256058C}</ProjectGuid>
     <RootNamespace>EmptyProject</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -159,6 +160,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <UACExecutionLevel>AsInvoker</UACExecutionLevel>
       <DelayLoadDLLs>%(DelayLoadDLLs)</DelayLoadDLLs>
+      <StackReserveSize>1000000000</StackReserveSize>
     </Link>
     <Manifest>
       <EnableDPIAwareness>true</EnableDPIAwareness>
@@ -187,7 +189,6 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>DXUT.h</PrecompiledHeaderFile>
-      <SDLCheck>false</SDLCheck>
     </ClCompile>
     <Link>
       <AdditionalOptions> %(AdditionalOptions)</AdditionalOptions>
@@ -385,47 +386,60 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CGame.cpp" />
-    <ClCompile Include="CLoading.cpp" />
-    <ClCompile Include="CPlayer.cpp" />
-    <ClCompile Include="Frame.cpp" />
-    <ClCompile Include="GameManager.cpp" />
-    <ClCompile Include="ImageManager.cpp" />
-    <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="MainGame.cpp" />
-    <ClCompile Include="MeshLoader.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="ObjectManager.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="FxManager.cpp" />
-    <ClInclude Include="CameraManager.h" />
-    <ClInclude Include="CGame.h" />
-    <ClInclude Include="CLoading.h" />
-    <ClInclude Include="Collider.h" />
-    <ClInclude Include="CollisionManager.h" />
+    <ClCompile Include="CBlock.cpp" />
+    <ClCompile Include="CGameManager.cpp" />
+    <ClInclude Include="CBlock.h" />
+    <ClInclude Include="CAnimation.h" />
+    <ClInclude Include="CButton.h" />
+    <ClInclude Include="CCameraManager.h" />
+    <ClInclude Include="CCollider.h" />
+    <ClInclude Include="CComponent.h" />
+    <ClInclude Include="CGameScene.h" />
+    <ClInclude Include="CGraphicsManager.h" />
+    <ClInclude Include="CInputManager.h" />
+    <ClInclude Include="CLoadScene.h" />
+    <ClInclude Include="CMainGame.h" />
+    <ClInclude Include="CObject.h" />
+    <ClInclude Include="CObjectManager.h" />
     <ClInclude Include="CPlayer.h" />
-    <ClInclude Include="Frame.h" />
-    <ClInclude Include="GameManager.h" />
-    <ClInclude Include="ImageManager.h" />
-    <ClInclude Include="InputManager.h" />
-    <ClInclude Include="MainGame.h" />
-    <ClInclude Include="MeshLoader.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="ObjectManager.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="Schedule.h" />
-    <ClInclude Include="singleton.h" />
+    <ClInclude Include="CRenderer2D.h" />
+    <ClInclude Include="CScene.h" />
+    <ClInclude Include="CSceneManager.h" />
+    <ClInclude Include="CScheduleAdmin.h" />
+    <ClInclude Include="CSingleton.h" />
+    <ClInclude Include="CSprite.h" />
+    <ClInclude Include="CSpriteRenderer.h" />
+    <ClInclude Include="CText.h" />
+    <ClInclude Include="CTitleScene.h" />
+    <ClInclude Include="CTransform.h" />
+    <ClInclude Include="CGameManager.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="FxManager.h" />
     <None Include="DXUT\Optional\directx.ico" />
     <ClInclude Include="DXUT\Core\DXUT.h" />
     <ClInclude Include="DXUT\Core\DXUTenum.h" />
     <ClInclude Include="DXUT\Core\DXUTmisc.h" />
-    <ClCompile Include="CameraManager.cpp" />
-    <ClCompile Include="Collider.cpp" />
-    <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="CAnimation.cpp" />
+    <ClCompile Include="CButton.cpp" />
+    <ClCompile Include="CCameraManager.cpp" />
+    <ClCompile Include="CCollider.cpp" />
+    <ClCompile Include="CComponent.cpp" />
+    <ClCompile Include="CGameScene.cpp" />
+    <ClCompile Include="CGraphicsManager.cpp" />
+    <ClCompile Include="CInputManager.cpp" />
+    <ClCompile Include="CLoadScene.cpp" />
+    <ClCompile Include="CMainGame.cpp" />
+    <ClCompile Include="CObject.cpp" />
+    <ClCompile Include="CObjectManager.cpp" />
+    <ClCompile Include="CPlayer.cpp" />
+    <ClCompile Include="CRenderer2D.cpp" />
+    <ClCompile Include="CScene.cpp" />
+    <ClCompile Include="CSceneManager.cpp" />
+    <ClCompile Include="CScheduleAdmin.cpp" />
+    <ClCompile Include="CSprite.cpp" />
+    <ClCompile Include="CSpriteRenderer.cpp" />
+    <ClCompile Include="CText.cpp" />
+    <ClCompile Include="CTitleScene.cpp" />
+    <ClCompile Include="CTransform.cpp" />
     <ClCompile Include="DXUT\Core\DXUT.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
